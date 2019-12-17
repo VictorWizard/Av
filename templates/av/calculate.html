@@ -1,0 +1,15 @@
+{% extends "layout/base.html" %}
+
+{% block title%}Расчет стоимости{% endblock %}
+
+{% block content %}
+    <div class="intro-text">
+      <h2>Узнать стоимость</h2>
+      <form method="get">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="Рассчитать сумму">
+      </form>
+        {{ price }}
+    </div>
+{% endblock %}
