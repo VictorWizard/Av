@@ -1245,3 +1245,60 @@ body.mobile-nav-active #mobile-nav-toggle {
 #footer .footer-links a:hover {
   color: #1dc8cd;
 }
+
+/*--------------------------------------------------------------
+# Custom
+--------------------------------------------------------------*/
+.custom_table{
+  padding-left: 10%;
+  width: 90%;
+  color: #1c7430;
+}
+.custom_table a{
+  color: #1c7430;
+}
+.custom_table th{
+  padding: .65rem;
+  vertical-align: top;
+  border-top: 2px solid black;
+  border-bottom: 1px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+.custom_table td{
+  padding: .40rem;
+  vertical-align: top;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+.custom_table thead th{
+  vertical-align: bottom;
+  border-bottom: 2px solid black;
+}
+.price-list h2{
+    color: green!important;
+}
+.to_know_price{
+
+}
+.calculated_price{
+    color: #1c7430;
+  margin-right: 35px;
+}
+.form{
+  width: 60%;
+  margin-left: 20%;
+  text-align: center;
+  margin-top: 20px;
+}
+.form-item1, .form-item2{
+    color: green;
+}
+.form-item2{
+  margin-right: 115px;
+}
+.button1{
+  margin-right: 27px;
+}

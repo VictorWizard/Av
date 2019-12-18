@@ -4,7 +4,11 @@
 
 {% block content %}
     <div class="intro-text">
-      <h2>Прайс-лист</h2>
-      {% render_table table %}
+      <div class="price-list">
+          <h2>Прайс-лист</h2>
+      </div>
+        <div class="custom_table">
+            {% render_table table %}
+        </div>
     </div>
 {% endblock %}
