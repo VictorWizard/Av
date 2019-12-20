@@ -1,0 +1,47 @@
+{% extends "layout/base.html" %}
+
+{% block title%}Расчет стоимости{% endblock %}
+
+{% block content %}
+    <div class="intro-text">
+        <div class="to_know_price">
+            <h2>Заявка на оказание услуги</h2>
+        </div>
+        <div class="form">
+            <form method="post">{% csrf_token %}
+                <div class="form-group form-item1">
+                    <label>Имя и фамилия: </label>
+                    {{ form.name }}
+                </div>
+                <div class="form-group form-item1">
+                    <label>Номер телефона: </label>
+                    {{ form.tel }}
+                </div>
+                <div class="form-group form-item1">
+                    <label>E-mail: </label>
+                    {{ form.e_mail }}
+                </div>
+                <div class="form-group form-item1">
+                    <label>Модель автомобиля: </label>
+                    {{ form.car }}
+                </div>
+                <div class="form-group form-item1">
+                    <label>Тип автомобиля: </label>
+                    {{ form.type }}
+                </div>
+                <div class="form-group form-item1">
+                    <label>Тип услуги: </label>
+                    {{ form.service }}
+                </div>
+                <div class="form-group form-item1">
+                    <label>Дата оказания услуги: </label>
+                    {{ form.date_service }}
+                </div>
+                <div class="button1">
+                    <input type="submit" value="Отправить заявку">
+                </div>
+            </form>
+        </div>
+        <br>
+    </div>
+{% endblock %}
