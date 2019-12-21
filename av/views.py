@@ -25,7 +25,8 @@ def calculate(request):
         form = CarsForm(request.GET)
         if form.is_valid():
             car = form.cleaned_data.get("car")
-            service = form.cleaned_data.get("service")   
+            service = form.cleaned_data.get("service")
+            type = form.cleaned_data.get("type")
             for i in Services_prices.objects.all():
                 ccar = i.car
                 sservice = i.service
