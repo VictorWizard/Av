@@ -29,12 +29,13 @@ def calculate(request):
             for i in Services_prices.objects.all():
                 ccar = i.car
                 sservice = i.service
-                if car == ccar and service == sservice:
+                ttype = i.type
+                if car == ccar and service == sservice and type == ttype:
                     pprice = i.price
                     break
-                elif (car == None and service != None) or (car != None and service == None):
+                elif (car == None and type == None and service != None) or (car != None and service == None and type == None) or (car == None and service == None and type != None):
                     pprice = 'Заполните все поля для получения цены за услугу'
-                elif car == None and service == None:
+                elif car == None and service == None and type == None:
                     pprice = ''
                 else:
                     pprice = 'Нет такой услуги для выбранного автомобиля'
