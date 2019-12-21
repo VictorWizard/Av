@@ -6,7 +6,7 @@ class CarsForm(forms.ModelForm):
     service = forms.ModelChoiceField(queryset=Services.objects.all(), label='Тип услуги', required = False, widget=forms.widgets.Select())
     class Meta:
         model = Calculate_price
-        fields = ('car', 'service')
+        fields = ('car', 'type', 'service')
         
 class AppointmentForm(forms.ModelForm):
     date_service = forms.DateTimeField(widget=forms.widgets.SelectDateWidget)
