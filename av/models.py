@@ -38,7 +38,7 @@ class Services(models.Model):
         
 class Services_prices(models.Model):
     car = models.ForeignKey('Cars', on_delete=models.PROTECT, verbose_name='Модель автомобиля')
-    type = models.ForeignKey('Types_of_car', on_delete=models.PROTECT, verbose_name='Тип автомобиля')
+    type = models.ForeignKey('Types_of_car', on_delete=models.PROTECT, null=True, verbose_name='Тип автомобиля')
     service = models.ForeignKey('Services', on_delete=models.PROTECT, verbose_name='Тип услуги')
     price = models.CharField(max_length=200, verbose_name='Цена')
     class Meta:
@@ -60,7 +60,7 @@ class Appointments(models.Model):
     e_mail = models.CharField(max_length=200, blank=True, db_index=True, verbose_name='Номер телефона')
     service = models.ForeignKey('Services', on_delete=models.PROTECT, verbose_name='Тип услуги')
     car = models.ForeignKey('Cars', on_delete=models.PROTECT, verbose_name='Модель автомобиля')
-    type = models.ForeignKey('Types_of_car', on_delete=models.PROTECT, verbose_name='Тип автомобиля')
+    type = models.ForeignKey('Types_of_car', on_delete=models.PROTECT, null=True, verbose_name='Тип автомобиля')
     date_created = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата публикации заявки')
     date_service = models.DateTimeField(db_index=True, verbose_name='Дата')
     def __str__(self):
