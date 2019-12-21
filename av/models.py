@@ -4,6 +4,7 @@ import datetime
 
 class Calculate_price(models.Model):
     car = models.ForeignKey('Cars', on_delete=models.PROTECT, verbose_name='Модель автомобиля')
+    type = models.ForeignKey('Types_of_car', on_delete=models.PROTECT, verbose_name='Тип автомобиля')
     service = models.ForeignKey('Services', on_delete=models.PROTECT, verbose_name='Тип услуги')
     class Meta:
         verbose_name_plural = 'Расчет стоимости'
@@ -36,8 +37,9 @@ class Services(models.Model):
         verbose_name = 'Виды услуг'
         
 class Services_prices(models.Model):
-    service = models.ForeignKey('Services', on_delete=models.PROTECT, verbose_name='Тип услуги')
     car = models.ForeignKey('Cars', on_delete=models.PROTECT, verbose_name='Модель автомобиля')
+    type = models.ForeignKey('Types_of_car', on_delete=models.PROTECT, verbose_name='Тип автомобиля')
+    service = models.ForeignKey('Services', on_delete=models.PROTECT, verbose_name='Тип услуги')
     price = models.CharField(max_length=200, verbose_name='Цена')
     class Meta:
         verbose_name_plural = 'Услуги+цена'
