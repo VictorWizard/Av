@@ -7,4 +7,4 @@ class ServicesTable(tables.Table):
     class Meta:
         model = Services_prices
         template_name = "django_tables2/bootstrap.html"
-        fields = ("service", "car", "price")
+        fields = ("service", "car", "type", "price")
