@@ -1,9 +1,34 @@
 {% extends "layout/base.html" %}
 
 {% block content %}
-<div class="intro-text dumb">
-      <h2>{{ content }}</h2>
-      <p>Когда-нибудь</p>
-      <a href="{% url 'index' %}" class="btn-get-started scrollto">Какая-то кнопка</a>
-</div>
+    <section id="intro">
+        <div class="container">
+            <div class="intro-text">
+                <div>
+                    <h2>{{ content }}</h2>
+                    <p>Когда-нибудь</p>
+                    <a href="{% url 'index' %}" class="btn-get-started scrollto">Какая-то кнопка</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="more-features">
+        <div class="container">
+            <div class="intro-text">
+                <div class="section-header">
+                    <h3 class="section-title">Список услуг автомойки</h3>
+                    <span class="section-divider"></span>
+                </div>
+                <div class="row">
+                    {% for service in services %}
+                        <div class="col-lg-6">
+                            <div class="box">
+                                <h4 class="title">{{ service.service }}</h4>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

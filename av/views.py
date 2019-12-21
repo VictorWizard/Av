@@ -1,12 +1,23 @@
 from django.shortcuts import render
-from .forms import CarsForm
-from .models import Calculate_price, Cars, Services_prices, Services, Tel_number
+from django.views.generic.edit import CreateView
+from .forms import CarsForm, AppointmentForm
+from .models import Calculate_price, Cars, Services_prices, Services, Tel_number, Appointments, Types_of_car
 from .tables import ServicesTable
 
 def index(request):
     content = 'Тут будет содержимое'
-    context = {'content': content,}
+    services = Services.objects.all()
+    context = {'content': content, 'services': services}
     return render(request, 'av/index.html', context)
+
+class AppointmentCreateView(CreateView):
+    template_name = 'av/appointment.html'
+    form_class = AppointmentForm
+    success_url = '/appointment'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['appointment'] = Appointments.objects.all()
+        return context
     
 def calculate(request):
     pprice = ''
@@ -38,7 +49,7 @@ def prices(request):
     return render(request, "av/prices.html", {
         "table": table
     })
-    
+
 def about(request):
     content = 'Информация об автомойке'
     context = {'content': content}

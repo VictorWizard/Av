@@ -3,45 +3,49 @@
 {% block title%}Расчет стоимости{% endblock %}
 
 {% block content %}
-    <div class="intro-text">
-        <div class="to_know_price">
-            <h2>Заявка на оказание услуги</h2>
+    <section id="intro">
+        <div class="container">
+            <div class="intro-text">
+                <div class="to_know_price">
+                    <h4>Заявка на оказание услуги</h4>
+                </div>
+                <div class="form">
+                    <form method="post">{% csrf_token %}
+                        <div class="form-group form-item1">
+                            <div class="labell"><label>Имя и фамилия: </label></div>
+                            <div class="form-padding">{{ form.name }}</div>
+                        </div>
+                        <div class="form-group form-item1">
+                            <div class="labell"><label>Номер телефона: </label></div>
+                            <div class="form-padding">{{ form.tel }}</div>
+                        </div>
+                        <div class="form-group form-item1">
+                            <div class="labell"><label>E-mail: </label></div>
+                            <div class="form-padding">{{ form.e_mail }}</div>
+                        </div>
+                        <div class="form-group form-item1">
+                            <div class="labell"><label>Модель автомобиля: </label></div>
+                            <div class="form-padding">{{ form.car }}</div>
+                        </div>
+                        <div class="form-group form-item1">
+                            <div class="labell"><label>Тип автомобиля: </label></div>
+                            <div class="form-padding">{{ form.type }}</div>
+                        </div>
+                        <div class="form-group form-item1">
+                            <div class="labell"><label>Тип услуги: </label></div>
+                            <div class="form-padding">{{ form.service }}</div>
+                        </div>
+                        <div class="form-group form-item1">
+                            <div class="labell"><label>Дата оказания услуги: </label></div>
+                            <div class="form-padding">{{ form.date_service }}</div>
+                        </div>
+                        <div class="button1">
+                            <button type="submit" class="custom_btn">Отправить заявку</button>
+                        </div>
+                    </form>
+                </div>
+                <br>
+            </div>
         </div>
-        <div class="form">
-            <form method="post">{% csrf_token %}
-                <div class="form-group form-item1">
-                    <label>Имя и фамилия: </label>
-                    {{ form.name }}
-                </div>
-                <div class="form-group form-item1">
-                    <label>Номер телефона: </label>
-                    {{ form.tel }}
-                </div>
-                <div class="form-group form-item1">
-                    <label>E-mail: </label>
-                    {{ form.e_mail }}
-                </div>
-                <div class="form-group form-item1">
-                    <label>Модель автомобиля: </label>
-                    {{ form.car }}
-                </div>
-                <div class="form-group form-item1">
-                    <label>Тип автомобиля: </label>
-                    {{ form.type }}
-                </div>
-                <div class="form-group form-item1">
-                    <label>Тип услуги: </label>
-                    {{ form.service }}
-                </div>
-                <div class="form-group form-item1">
-                    <label>Дата оказания услуги: </label>
-                    {{ form.date_service }}
-                </div>
-                <div class="button1">
-                    <input type="submit" value="Отправить заявку">
-                </div>
-            </form>
-        </div>
-        <br>
-    </div>
+    </section>
 {% endblock %}

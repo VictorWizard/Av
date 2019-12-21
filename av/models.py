@@ -17,6 +17,15 @@ class Cars(models.Model):
         verbose_name_plural = 'Модели автомобилей'
         verbose_name = 'Модель автомобиля'
         ordering = ['name']
+
+class Types_of_car(models.Model):
+    type = models.CharField(max_length=200, db_index=True, verbose_name='Тип автомобиля')
+    def __str__(self):
+        return self.type
+    class Meta:
+        verbose_name_plural = 'Типы автомобилей'
+        verbose_name = 'Типы автомобиля'
+        ordering = ['type']
         
 class Services(models.Model):
     service = models.CharField(max_length=200, db_index=True, verbose_name='Тип услуги')
@@ -42,3 +51,19 @@ class Tel_number(models.Model):
     class Meta:
         verbose_name_plural = 'Номер телефона'
         verbose_name = 'Номер телефона'
+
+class Appointments(models.Model):
+    name = models.CharField(max_length=200, db_index=True, verbose_name='Имя, фамилия')
+    tel = models.CharField(max_length=200, db_index=True, verbose_name='Номер телефона')
+    e_mail = models.CharField(max_length=200, blank=True, db_index=True, verbose_name='Номер телефона')
+    service = models.ForeignKey('Services', on_delete=models.PROTECT, verbose_name='Тип услуги')
+    car = models.ForeignKey('Cars', on_delete=models.PROTECT, verbose_name='Модель автомобиля')
+    type = models.ForeignKey('Types_of_car', on_delete=models.PROTECT, verbose_name='Тип автомобиля')
+    date_created = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата публикации заявки')
+    date_service = models.DateTimeField(db_index=True, verbose_name='Дата')
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = 'Записи на мойку'
+        verbose_name = 'Записи на мойку'
+        ordering = ['date_created']
