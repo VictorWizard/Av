@@ -70,9 +70,24 @@ class Appointments(models.Model):
     car = models.ForeignKey('Cars', on_delete=models.PROTECT, verbose_name='Модель автомобиля')
     type = models.ForeignKey('Types_of_car', on_delete=models.PROTECT, null=True, verbose_name='Тип автомобиля')
     date_created = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата публикации заявки')
-    date_service = models.DateTimeField(db_index=True, verbose_name='Дата')
+    date_service = models.DateField(db_index=True, verbose_name='Дата')
+    time_service = models.TimeField(db_index=True, verbose_name='Время')
+    price = models.CharField(max_length=50, db_index=True, null=True, verbose_name='Цена')
     def __str__(self):
         return self.name
+    def save(self, *args, **kwargs):
+        price = ''
+        if self.name != None:
+            for i in Services_prices.objects.all():
+                ccar = i.car
+                sservice = i.service
+                ttype = i.type
+                if self.car == ccar and self.service == sservice and self.type == ttype:
+                    self.price = i.price
+                    break
+            return self.price
+        else:
+            super().save(*args, **kwargs)
     class Meta:
         verbose_name_plural = 'Записи на мойку'
         verbose_name = 'Записи на мойку'

@@ -38,6 +38,12 @@
                         <div class="form-group form-item1">
                             <div class="labell"><label>Дата оказания услуги: </label></div>
                             <div class="form-padding">{{ form.date_service }}</div>
+                            <div class="form-padding-after"><label>{{ form.date_service.help_text }}</label></div>
+                        </div>
+                        <div class="form-group form-item1">
+                            <div class="labell"><label>Время оказания услуги: </label></div>
+                            <div class="form-padding">{{ form.time_service }}</div>
+                            <div class="form-padding-after"><label>{{ form.time_service.help_text }}</label></div>
                         </div>
                         <div class="button1">
                             <button type="submit" class="custom_btn">Отправить заявку</button>

@@ -7,9 +7,9 @@ class AvAdmin(admin.ModelAdmin):
     search_fields = ('service', 'car', 'price')
 
 class AppointmentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'date_created', 'date_service')
-    list_display_links = ('name', 'date_created', 'date_service')
-    search_fields = ('name', 'date_created', 'date_service')
+    list_display = ('name', 'date_service', 'time_service', 'date_created')
+    list_display_links = ('name', 'date_service', 'time_service', 'date_created')
+    search_fields = ('name', 'date_service', 'time_service', 'date_created')
     readonly_fields = ['date_created']
 
 class FeedbacksAdmin(admin.ModelAdmin):

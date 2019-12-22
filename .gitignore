@@ -6,3 +6,4 @@ myvenv
 venv
 db.sqlite3
 .DS_Store
+/av_site/settings.py
