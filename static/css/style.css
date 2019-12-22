@@ -8,7 +8,7 @@
 # General
 --------------------------------------------------------------*/
 body {
-  background: linear-gradient(45deg, #1de099, #1dc8cd);
+  background: linear-gradient(0deg, #00ffa2, #1be758);
   color: #666666;
   font-family: "Open Sans", sans-serif;
   overflow-x: hidden;
@@ -112,7 +112,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header.header-fixed {
-  background: linear-gradient(45deg, #1de099, #1dc8cd);
+  background-color: #1be758;
   padding: 20px 0;
   height: 72px;
   transition: all 0.5s;
@@ -517,8 +517,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   display: block;
   width: 60px;
   height: 3px;
-  background: #1dc8cd;
-  background: linear-gradient(0deg, #1dc8cd 0%, #55fabe 100%);
+  background: #0c8a2c;
   margin: 0 auto;
   margin-bottom: 20px;
 }
@@ -775,20 +774,16 @@ body.mobile-nav-active #mobile-nav-toggle {
 /* More Features Section
 --------------------------------*/
 #more-features {
-  padding: 60px 0 60px 0;
+  width: 100%;
+  padding-bottom: 60px;
 }
 
 #more-features .box {
   padding: 40px;
   margin-bottom: 30px;
   box-shadow: 0px 0px 30px rgba(73, 78, 92, 0.15);
-  background: #19cc8b;
+  background: #0fd062;
   transition: 0.4s;
-}
-
-#more-features{
-  text-align: center!important;
-  background-color: black;
 }
 
 #more-features .icon {
@@ -811,7 +806,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #more-features h4 {
-  margin-left: 100px;
+  text-align: center;
   font-weight: 700;
   margin-bottom: 15px;
   font-size: 18px;
@@ -1094,6 +1089,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 /* Contact Section
 --------------------------------*/
 #contact {
+  width: 100%;
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
   padding: 60px 0;
 }
@@ -1198,7 +1194,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 #contact .form button[type="submit"] {
-  background: linear-gradient(45deg, #1de099, #1dc8cd);
+  background: linear-gradient(45deg, #26c38a, #16a4a8);
   border: 0;
   border-radius: 20px;
   padding: 8px 30px;
@@ -1218,6 +1214,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding: 30px 0;
   color: #333;
   font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  #footer {
+    margin: 90px 0 0 0;
+  }
 }
 
 #footer .credits {
@@ -1248,9 +1250,10 @@ body.mobile-nav-active #mobile-nav-toggle {
   letter-spacing: 1px;
   display: inline-block;
   padding: 8px 28px;
-  border-radius: 50px;
+  border-radius: 35px;
   transition: 0.5s;
   margin: 10px;
+  margin-left: 50px;
   border: 2px solid #fff;
   color: #fff;
   background-color: #48e26b;
@@ -1307,6 +1310,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 @media (max-width: 768px) {
   .to_know_price h4{
+    text-align: center;
     font-size: 20px;
     line-height: 30px;
   }
@@ -1320,6 +1324,9 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-left: 20px;
   margin-top: 20px;
 }
+.formm{
+  text-align: center;
+}
 .form-item1, .form-item2{
     color: green;
 }
@@ -1329,6 +1336,17 @@ body.mobile-nav-active #mobile-nav-toggle {
 .labell{
   display: inline-block;
   width: 15%;
+}
+@media (max-width: 768px) {
+  .labell {
+    display: inline-block;
+    width: 25%;
+  }
+}
+.labelll{
+  display: inline-block;
+  width: 20%;
+  text-align: left;
 }
 .form-padding{
   display: inline-block;
@@ -1341,4 +1359,30 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 .box h4{
   color: red;
+}
+.lll{
+  padding-left: 50px;
+}
+.feedback-title{
+  padding: 0 15px;
+  font-size: 35px;
+  font-weight: 400;
+  line-height: 45px;
+  color: #328a21;
+  text-align: center;
+}
+.lol{
+  width: 100%;
+  text-align: center;
+}
+.loll{
+  text-align: center;
+}
+@media (max-width: 768px) {
+  .loll {
+    text-align: left;
+  }
+}
+.lol .form {
+  margin-left: 0px!important;
 }

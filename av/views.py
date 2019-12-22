@@ -1,14 +1,24 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
-from .forms import CarsForm, AppointmentForm
-from .models import Calculate_price, Cars, Services_prices, Services, Tel_number, Appointments, Types_of_car
+from .forms import FeedbackForm,CarsForm, AppointmentForm
+from .models import Calculate_price, Cars, Services_prices, Services, Tel_number, Appointments, Types_of_car, Feedbacks
 from .tables import ServicesTable
 
-def index(request):
-    content = 'Тут будет содержимое'
-    services = Services.objects.all()
-    context = {'content': content, 'services': services}
-    return render(request, 'av/index.html', context)
+#def index(request):
+    #content = 'Тут будет содержимое'
+    #services = Services.objects.all()
+    #context = {'content': content, 'services': services}
+    #return render(request, 'av/index.html', context)
+
+class MainPageCreateView(CreateView):
+    template_name = 'av/index.html'
+    form_class = FeedbackForm
+    success_url = '/'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['content'] = 'Тут будет содержимое'
+        context['services'] = Services.objects.all()
+        return context
 
 class AppointmentCreateView(CreateView):
     template_name = 'av/appointment.html'

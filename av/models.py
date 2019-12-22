@@ -47,12 +47,20 @@ class Services_prices(models.Model):
         ordering = ['service']
         
 class Tel_number(models.Model):
-    tel_number = models.CharField(max_length=30, db_index=True, verbose_name='Номер телефона')
+    tel_number = models.CharField(max_length=50, db_index=True, verbose_name='Номер телефона')
     def __str__(self):
         return self.tel_number
     class Meta:
         verbose_name_plural = 'Номер телефона'
         verbose_name = 'Номер телефона'
+
+class Address(models.Model):
+    address = models.CharField(max_length=100, db_index=True, verbose_name='Адрес')
+    def __str__(self):
+        return self.address
+    class Meta:
+        verbose_name_plural = 'Адрес'
+        verbose_name = 'Адрес'
 
 class Appointments(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name='Имя, фамилия')
@@ -69,3 +77,14 @@ class Appointments(models.Model):
         verbose_name_plural = 'Записи на мойку'
         verbose_name = 'Записи на мойку'
         ordering = ['date_created']
+
+class Feedbacks(models.Model):
+    name = models.CharField(max_length=200, db_index=True, verbose_name='Имя, фамилия')
+    e_mail = models.CharField(max_length=200, blank=True, db_index=True, verbose_name='Номер телефона')
+    rating = models.CharField(max_length=1, db_index=True, verbose_name='Оценка по 10-бальной шкале')
+    feedback = models.CharField(max_length=200, db_index=True, verbose_name='Отзыв')
+    date_published = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата публикации отзыва')
+    class Meta:
+        verbose_name_plural = 'Отзывы об автомойке'
+        verbose_name = 'Отзывы об автомойке'
+        ordering = ['date_published']

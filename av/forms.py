@@ -1,5 +1,5 @@
 from django import forms
-from .models import Calculate_price, Services, Cars, Services_prices, Appointments
+from .models import Calculate_price, Services, Cars, Services_prices, Appointments, Feedbacks
 
 class CarsForm(forms.ModelForm):
     car = forms.ModelChoiceField(queryset=Cars.objects.all(), label='Модель автомобиля', required = False, widget=forms.widgets.Select())
@@ -13,3 +13,8 @@ class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointments
         fields = ('name', 'tel', 'e_mail', 'service', 'car', 'type', 'date_service')
+
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = Feedbacks
+        fields = ('name', 'e_mail', 'rating', 'feedback')

@@ -66,6 +66,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'av.context_processors.tel_number',
+                'av.context_processors.address',
             ],
         },
     },

@@ -31,4 +31,40 @@
             </div>
         </div>
     </section>
+    <section id="contact">
+        <div class="container">
+            <div class="row" data-aos="fade-up">
+                <div class="lol">
+                    <div class="feedback-title">
+                        <h4>Оставьте нам, пожалуйста, свой отзыв!</h4>
+                    </div>
+                    <div class="form">
+                        <form method="post">{% csrf_token %}
+                            <div class="loll">
+                            <div class="form-group form-item1">
+                                <div class="labelll"><label>Имя и фамилия: </label></div>
+                                <div class="form-padding">{{ form.name }}</div>
+                            </div>
+                            <div class="form-group form-item1">
+                                <div class="labelll"><label>E-mail: </label></div>
+                                <div class="form-padding">{{ form.e_mail }}</div>
+                            </div>
+                            <div class="form-group form-item1">
+                                <div class="labelll"><label>Оценка(по шкале от 1 до 10): </label></div>
+                                <div class="form-padding">{{ form.rating }}</div>
+                            </div>
+                            <div class="form-group form-item1">
+                                <div class="labelll"><label>Ваш отзыв: </label></div>
+                                <div class="form-padding">{{ form.feedback }}</div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="custom_btn">Отправить заявку</button>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- #contact -->
 {% endblock %}
