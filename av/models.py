@@ -85,7 +85,7 @@ class Appointments(models.Model):
                 if self.car == ccar and self.service == sservice and self.type == ttype:
                     self.price = i.price
                     break
-            return self.price
+            super().save(*args, **kwargs)
         else:
             super().save(*args, **kwargs)
     class Meta:
