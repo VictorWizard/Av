@@ -16,7 +16,7 @@ class MainPageCreateView(CreateView):
     success_url = '/'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['content'] = 'Тут будет содержимое'
+        context['content'] = 'Автомойка #1 в Семее'
         context['services'] = Services.objects.all()
         return context
 
