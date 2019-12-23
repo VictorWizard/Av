@@ -1324,6 +1324,11 @@ body.mobile-nav-active #mobile-nav-toggle {
     color: #1c7430;
   margin-right: 35px;
 }
+.calculated_price label{
+  font-size: 25px;
+  float: left;
+  padding-left: 50px;
+}
 .form{
   text-align: left;
   margin-left: 20px;
@@ -1383,7 +1388,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: red;
 }
 .lll{
-  padding-left: 50px;
+  padding-left: 10px;
 }
 .feedback-title{
   padding: 0 15px;

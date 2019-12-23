@@ -36,7 +36,6 @@
 </head>
 
 <body>
-
   <!--==========================
     Header
   ============================-->
@@ -55,7 +54,6 @@
               <li><a href="{% url 'prices' %}">Цены</a></li>
               <li><a href="{% url 'calculate' %}">Рассчитать стоимость</a></li>
               <li><a href="{% url 'appointment' %}">Записаться</a></li>
-              <li><a href="{% url 'about' %}">Об автомойке</a></li>
           </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -64,6 +62,7 @@
   <!--==========================
     Intro Section
   ============================-->
+
   <div class="row" id="lal" data-aos="fade-up">
   {% block content %}
   {% endblock %}
@@ -111,7 +110,6 @@
   <script src="{% static 'lib/superfish/hoverIntent.js' %}"></script>
   <script src="{% static 'lib/superfish/superfish.min.js' %}"></script>
   <script src="{% static 'lib/magnific-popup/magnific-popup.min.js' %}"></script>
-  <script src="{% static 'contactform/contactform.js' %}"></script>
   <script src="{% static 'js/main.js' %}"></script>
 
 

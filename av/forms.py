@@ -7,14 +7,14 @@ class CarsForm(forms.ModelForm):
     service = forms.ModelChoiceField(queryset=Services.objects.all(), label='Тип услуги', required = False, widget=forms.widgets.Select())
     class Meta:
         model = Calculate_price
-        fields = ('car', 'type', 'service')
+        fields = ('car', 'service')
 
 class AppointmentForm(forms.ModelForm):
     date_service = forms.DateField(help_text='Введите дату в таком формате: 12.12.2019', widget=forms.widgets.DateInput)
     time_service = forms.TimeField(widget=forms.widgets.TimeInput, help_text="Введите время в таком формате: 15:00")
     class Meta:
         model = Appointments
-        fields = ('name', 'tel', 'e_mail', 'service', 'car', 'type', 'date_service', 'time_service')
+        fields = ('name', 'tel', 'e_mail', 'car', 'num_car', 'service', 'date_service', 'time_service')
 
 class FeedbackForm(forms.ModelForm):
     class Meta:

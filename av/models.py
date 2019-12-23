@@ -5,7 +5,6 @@ import datetime
 
 class Calculate_price(models.Model):
     car = models.ForeignKey('Cars', on_delete=models.PROTECT, verbose_name='Модель автомобиля')
-    type = models.ForeignKey('Types_of_car', on_delete=models.PROTECT, null=True, verbose_name='Тип автомобиля')
     service = models.ForeignKey('Services', on_delete=models.PROTECT, verbose_name='Тип услуги')
 
     class Meta:
@@ -14,31 +13,19 @@ class Calculate_price(models.Model):
 
 
 class Cars(models.Model):
-    name = models.CharField(max_length=200, db_index=True, verbose_name='Модель автомобиля')
+    car = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Тип автомобиля')
 
     def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name_plural = 'Модели автомобилей'
-        verbose_name = 'Модель автомобиля'
-        ordering = ['name']
-
-
-class Types_of_car(models.Model):
-    type = models.CharField(max_length=200, db_index=True, verbose_name='Тип автомобиля')
-
-    def __str__(self):
-        return self.type
+        return self.car
 
     class Meta:
         verbose_name_plural = 'Типы автомобилей'
-        verbose_name = 'Типы автомобиля'
-        ordering = ['type']
+        verbose_name = 'Тип автомобиля'
+        ordering = ['car']
 
 
 class Services(models.Model):
-    service = models.CharField(max_length=200, db_index=True, verbose_name='Тип услуги')
+    service = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Тип услуги')
 
     def __str__(self):
         return self.service
@@ -49,15 +36,14 @@ class Services(models.Model):
 
 
 class Services_prices(models.Model):
-    car = models.ForeignKey('Cars', on_delete=models.PROTECT, verbose_name='Модель автомобиля')
-    type = models.ForeignKey('Types_of_car', on_delete=models.PROTECT, null=True, verbose_name='Тип автомобиля')
-    service = models.ForeignKey('Services', on_delete=models.PROTECT, verbose_name='Тип услуги')
-    price = models.CharField(max_length=200, verbose_name='Цена')
+    car = models.ForeignKey('Cars', null=True, blank=True, on_delete=models.PROTECT, verbose_name='Тип автомобиля')
+    service = models.ForeignKey('Services', null=True, blank=True, on_delete=models.PROTECT, verbose_name='Тип услуги')
+    price = models.CharField(max_length=200, null=True, blank=True, verbose_name='Цена')
 
     class Meta:
         verbose_name_plural = 'Услуги+цена'
         verbose_name = 'Услуги+цена'
-        ordering = ['service']
+        ordering = ['-car']
 
 
 class Tel_number(models.Model):
@@ -84,6 +70,7 @@ class Address(models.Model):
 
 class Clients(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name='Имя, фамилия')
+    num_car = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Гос.номер автомобиля')
     count = models.IntegerField(default=0, db_index=True, verbose_name='Количество моек')
 
     def __str__(self):
@@ -99,9 +86,9 @@ class Appointments(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name='Имя, фамилия')
     tel = models.CharField(max_length=200, db_index=True, verbose_name='Номер телефона')
     e_mail = models.CharField(max_length=200, blank=True, db_index=True, verbose_name='E-mail')
+    car = models.ForeignKey('Cars', on_delete=models.PROTECT, verbose_name='Тип автомобиля')
+    num_car = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Гос.номер автомобиля')
     service = models.ForeignKey('Services', on_delete=models.PROTECT, verbose_name='Тип услуги')
-    car = models.ForeignKey('Cars', on_delete=models.PROTECT, verbose_name='Модель автомобиля')
-    type = models.ForeignKey('Types_of_car', on_delete=models.PROTECT, null=True, verbose_name='Тип автомобиля')
     date_created = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата публикации заявки')
     date_service = models.DateField(db_index=True, verbose_name='Дата')
     time_service = models.TimeField(db_index=True, help_text="Введите время в таком формате: 15:00", verbose_name='Время')
@@ -115,38 +102,61 @@ class Appointments(models.Model):
         if self.name != None:
             if Clients.objects.count() != 0:
                 for n in Clients.objects.all():
-                    if n.name == self.name:
+                    if n.name == self.name or n.num_car == self.name:
                         if n.count == 0:
                             n.count = 1
-                            n.save()
+                            if n.num_car == self.num_car:
+                                n.save()
+                            else:
+                                n.num_car = n.num_car + ', ' + self.num_car
+                                n.save()
                         elif n.count == 1:
                             n.count = 2
-                            n.save()
+                            if n.num_car == self.num_car:
+                                n.save()
+                            else:
+                                n.num_car = n.num_car + ', ' + self.num_car
+                                n.save()
                         elif n.count == 2:
                             n.count = 3
-                            n.save()
+                            if n.num_car == self.num_car:
+                                n.save()
+                            else:
+                                n.num_car = n.num_car + ', ' + self.num_car
+                                n.save()
                         elif n.count == 3:
                             n.count = 4
-                            n.save()
+                            if n.num_car == self.num_car:
+                                n.save()
+                            else:
+                                n.num_car = n.num_car + ', ' + self.num_car
+                                n.save()
                         elif n.count == 4:
                             n.count = 5
-                            n.save()
+                            if n.num_car == self.num_car:
+                                n.save()
+                            else:
+                                n.num_car = n.num_car + ', ' + self.num_car
+                                n.save()
                         elif n.count == 5:
                             n.count = 1
+                            n.num_car = self.num_car
                             n.save()
                         counter = n.count
                     else:
-                        Clients.objects.create(name=self.name, count=1)
+                        Clients.objects.create(name=self.name, num_car=self.num_car, count=1)
             else:
-                Clients.objects.create(name=self.name, count=1)
+                Clients.objects.create(name=self.name, num_car=self.num_car, count=1)
             if counter == 5:
                 self.price = 'Бесплатно(5-ая мойка)'
             else:
                 for i in Services_prices.objects.all():
                     ccar = i.car
                     sservice = i.service
-                    ttype = i.type
-                    if self.car == ccar and self.service == sservice and self.type == ttype:
+                    if self.car == ccar and self.service == sservice:
+                        self.price = i.price
+                        break
+                    elif ccar == None and self.service == sservice:
                         self.price = i.price
                         break
             super().save(*args, **kwargs)

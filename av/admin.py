@@ -1,21 +1,21 @@
 from django.contrib import admin
-from .models import Calculate_price, Cars, Services_prices, Services, Tel_number, Appointments, Types_of_car, Feedbacks, Address, Clients
+from .models import Calculate_price, Cars, Services_prices, Services, Tel_number, Appointments, Feedbacks, Address, Clients
 
 class AvAdmin(admin.ModelAdmin):
-    list_display = ('service', 'car', 'price')
-    list_display_links = ('service', 'car', 'price')
-    search_fields = ('service', 'car', 'price')
+    list_display = ('car', 'service', 'price')
+    list_display_links = ('car', 'service', 'price')
+    search_fields = ('car', 'service', 'price')
 
 class AppointmentsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'date_service', 'time_service', 'date_created')
-    list_display_links = ('name', 'date_service', 'time_service', 'date_created')
-    search_fields = ('name', 'date_service', 'time_service', 'date_created')
+    list_display = ('name', 'date_service', 'time_service', 'service', 'price')
+    list_display_links = ('name', 'date_service', 'time_service')
+    search_fields = ('name', 'date_service', 'time_service')
     readonly_fields = ['date_created']
 
 class ClientsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'count')
-    list_display_links = ('name', 'count')
-    search_fields = ('name', 'count')
+    list_display = ('name', 'num_car', 'count')
+    list_display_links = ('name', 'num_car')
+    search_fields = ('name', 'num_car')
 
 class FeedbacksAdmin(admin.ModelAdmin):
     list_display = ('name', 'e_mail', 'rating', 'feedback')
@@ -29,6 +29,5 @@ admin.site.register(Services_prices, AvAdmin)
 admin.site.register(Services)
 admin.site.register(Tel_number)
 admin.site.register(Address)
-admin.site.register(Types_of_car)
 admin.site.register(Feedbacks, FeedbacksAdmin)
 admin.site.register(Clients, ClientsAdmin)

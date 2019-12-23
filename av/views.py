@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
 from .forms import FeedbackForm,CarsForm, AppointmentForm
-from .models import Calculate_price, Cars, Services_prices, Services, Tel_number, Appointments, Types_of_car, Feedbacks
+from .models import Calculate_price, Cars, Services_prices, Services, Tel_number, Appointments, Feedbacks
 from .tables import ServicesTable
 
 #def index(request):
@@ -16,14 +16,14 @@ class MainPageCreateView(CreateView):
     success_url = '/'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['content'] = 'Автомойка #1 в Семее'
+        context['content'] = 'Автомойка «У ГАИ»'
         context['services'] = Services.objects.all()
         return context
 
 class AppointmentCreateView(CreateView):
     template_name = 'av/appointment.html'
     form_class = AppointmentForm
-    success_url = '/appointment'
+    success_url = '/success'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['appointment'] = Appointments.objects.all()
@@ -36,15 +36,13 @@ def calculate(request):
         if form.is_valid():
             car = form.cleaned_data.get("car")
             service = form.cleaned_data.get("service")
-            type = form.cleaned_data.get("type")
             for i in Services_prices.objects.all():
                 ccar = i.car
                 sservice = i.service
-                ttype = i.type
-                if car == ccar and service == sservice and type == ttype:
+                if car == ccar and service == sservice:
                     pprice = i.price
                     break
-                elif car == None and service == None and type == None:
+                elif car == None and service == None:
                     pprice = ''
                 else:
                     pprice = 'Нет такой услуги для выбранного автомобиля'
@@ -58,7 +56,5 @@ def prices(request):
         "table": table
     })
 
-def about(request):
-    content = 'Информация об автомойке'
-    context = {'content': content}
-    return render(request, 'av/about.html', context)
+def success(request):
+    return render(request, 'av/success.html')
