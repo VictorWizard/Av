@@ -123,7 +123,8 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #intro {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   position: relative;
 }
 
@@ -1211,8 +1212,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #footer {
   background: #fff;
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
-  padding: 30px 0;
-  margin: 130px 0 0 0;
+  padding: 30px 0 0 0;
   color: #333;
   font-size: 14px;
 }
@@ -1349,8 +1349,17 @@ body.mobile-nav-active #mobile-nav-toggle {
   width: 20%;
   text-align: left;
 }
+.labellll{
+  display: inline-block;
+}
+.labellll label{
+  margin-bottom: 0px;
+}
 .form-padding{
   display: inline-block;
+}
+.form-padding1{
+  display: block;
 }
 .form-padding-after{
   display: inline-block;
