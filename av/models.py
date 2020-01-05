@@ -1,6 +1,4 @@
 from django.db import models
-from django.contrib.auth import get_user_model
-import datetime
 
 
 class Calculate_price(models.Model):
@@ -86,13 +84,15 @@ class Appointments(models.Model):
     name = models.CharField(max_length=200, db_index=True, verbose_name='Имя, фамилия')
     tel = models.CharField(max_length=200, db_index=True, verbose_name='Номер телефона')
     e_mail = models.CharField(max_length=200, blank=True, db_index=True, verbose_name='E-mail')
-    car = models.ForeignKey('Cars', on_delete=models.PROTECT, verbose_name='Тип автомобиля')
+    car = models.ForeignKey('Cars', null=True, on_delete=models.PROTECT, verbose_name='Тип автомобиля')
     num_car = models.CharField(max_length=200, null=True, db_index=True, verbose_name='Гос.номер автомобиля')
-    service = models.ForeignKey('Services', on_delete=models.PROTECT, verbose_name='Тип услуги')
+    service1 = models.ForeignKey(Services, null=True, blank=True, on_delete=models.PROTECT, related_name='first_service', verbose_name='Тип услуги')
+    service2 = models.ForeignKey(Services, null=True, blank=True, on_delete=models.PROTECT, related_name='second_service',  verbose_name='Тип услуги(опционально)')
+    service3 = models.ForeignKey(Services, null=True, blank=True, on_delete=models.PROTECT, related_name='three_service',  verbose_name='Тип услуги(опционально)')
     date_created = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Дата публикации заявки')
     date_service = models.DateField(db_index=True, verbose_name='Дата')
-    time_service = models.TimeField(db_index=True, help_text="Введите время в таком формате: 15:00", verbose_name='Время')
-    price = models.CharField(max_length=50, db_index=True, null=True, verbose_name='Цена')
+    time_service = models.TimeField(db_index=True, verbose_name='Время')
+    price = models.CharField(max_length=200, db_index=True, null=True, verbose_name='Цена')
 
     def __str__(self):
         return self.name
@@ -153,12 +153,70 @@ class Appointments(models.Model):
                 for i in Services_prices.objects.all():
                     ccar = i.car
                     sservice = i.service
-                    if self.car == ccar and self.service == sservice:
-                        self.price = i.price
-                        break
-                    elif ccar == None and self.service == sservice:
-                        self.price = i.price
-                        break
+                    a = "Мойка двигателя"
+                    b = "Стирка ковров"
+                    c = "Химчистка"
+                    if (self.car == ccar and self.service1 == sservice) or (ccar == None and self.service1 == sservice):
+                        if self.service1 != None and self.service2 == None and self.service3 == None:
+                            self.price = i.price
+                            break
+                        elif self.service1 != None and self.service2 != None and self.service3 == None:
+                            if str(self.service1) != a and str(self.service1) != b and str(self.service1) != c:
+                                self.price = int(i.price)
+                                print(self.price)
+                                print(i.price)
+                                print(type(self.service1))
+                            elif str(self.service1) == a:
+                                self.price = 1500
+                            elif str(self.service1) == b:
+                                self.price = 250
+                            elif str(self.service1) == c:
+                                self.price = 25000
+                            else:
+                                self.price = 2000000
+                            for d in Services_prices.objects.all():
+                                if (self.car == d.car and self.service2 == d.service) or (d.car == None and self.service2 == d.service):
+                                    if str(self.service2) != a and str(self.service2) != b and str(self.service2) != c:
+                                        self.price += int(d.price)
+                                    elif str(self.service2) == a:
+                                        self.price += 1500
+                                    elif str(self.service2) == b:
+                                        self.price += 250
+                                    elif str(self.service2) == c:
+                                        self.price += 25000
+                                    break
+                        elif self.service1 != None and self.service2 != None and self.service3 != None:
+                            if str(self.service1) != a and str(self.service1) != b and str(self.service1) != c:
+                                self.price = int(i.price)
+                            elif str(self.service1) == a:
+                                self.price = 1500
+                            elif str(self.service1) == b:
+                                self.price = 250
+                            elif str(self.service1) == c:
+                                self.price = 25000
+                            for d in Services_prices.objects.all():
+                                if (self.car == d.car and self.service2 == d.service) or (d.car == None and self.service2 == d.service):
+                                    if str(self.service2) != a and str(self.service2) != b and str(self.service2) != c:
+                                        self.price += int(d.price)
+                                    elif str(self.service2) == a:
+                                        self.price += 1500
+                                    elif str(self.service2) == b:
+                                        self.price += 250
+                                    elif str(self.service2) == c:
+                                        self.price += 25000
+                                    for e in Services_prices.objects.all():
+                                        if (self.car == e.car and self.service3 == e.service) or (e.car == None and self.service3 == e.service):
+                                            if str(self.service3) != a and str(self.service3) != b and str(self.service3) != c:
+                                                self.price += int(e.price)
+                                            elif str(self.service3) == a:
+                                                self.price += 1500
+                                            elif str(self.service3) == b:
+                                                self.price += 250
+                                            elif str(self.service3) == c:
+                                                self.price += 25000
+                                            break
+                        else:
+                            self.price = 'Не удалось рассчитать стоимость1'
             super().save(*args, **kwargs)
         else:
             super().save(*args, **kwargs)

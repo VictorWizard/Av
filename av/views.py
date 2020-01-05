@@ -1,14 +1,10 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView
-from .forms import FeedbackForm,CarsForm, AppointmentForm
-from .models import Calculate_price, Cars, Services_prices, Services, Tel_number, Appointments, Feedbacks
+
+from .forms import FeedbackForm, CarsForm, AppointmentForm
+from .models import Services_prices, Services, Appointments
 from .tables import ServicesTable
 
-#def index(request):
-    #content = 'Тут будет содержимое'
-    #services = Services.objects.all()
-    #context = {'content': content, 'services': services}
-    #return render(request, 'av/index.html', context)
 
 class MainPageCreateView(CreateView):
     template_name = 'av/index.html'
@@ -57,4 +53,6 @@ def prices(request):
     })
 
 def success(request):
-    return render(request, 'av/success.html')
+    price_from_success = Appointments.objects.last().price
+    context = {'price_from_success': price_from_success}
+    return render(request, 'av/success.html', context)
