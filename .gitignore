@@ -7,3 +7,7 @@ venv
 .DS_Store
 /av_site/settings.py
 /av/migrations/
+/models.py
+/models (2)_new.py
+/models (2)_лол.py
+/db - копия.sqlite3
