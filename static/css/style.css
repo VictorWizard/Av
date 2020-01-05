@@ -1331,6 +1331,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 .form{
   text-align: left;
+  margin-left: 20px;
   margin-top: 20px;
 }
 .formm{
@@ -1338,9 +1339,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 .form-item1, .form-item2{
     color: green;
-}
-.form-item2{
-
 }
 .labell{
   display: inline-block;
@@ -1408,9 +1406,6 @@ body.mobile-nav-active #mobile-nav-toggle {
   .loll {
     text-align: left;
   }
-}
-.lol .form {
-  margin-left: 0px!important;
 }
 img.background {
   min-height: 100%;
