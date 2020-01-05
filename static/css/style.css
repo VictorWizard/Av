@@ -1334,6 +1334,11 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-left: 20px;
   margin-top: 20px;
 }
+@media (max-width: 768px) {
+  .form{
+    margin-left: 70px;
+  }
+}
 .formm{
   text-align: center;
 }
