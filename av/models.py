@@ -237,4 +237,4 @@ class Feedbacks(models.Model):
     class Meta:
         verbose_name_plural = 'Отзывы об автомойке'
         verbose_name = 'Отзывы об автомойке'
-        ordering = ['date_published']
+        ordering = ['-date_published']
