@@ -99,52 +99,58 @@ class Appointments(models.Model):
 
     def save(self, *args, **kwargs):
         counter = 0
+        clientss_name = []
+        clientss_num = []
         if self.name != None:
             if Clients.objects.count() != 0:
                 for n in Clients.objects.all():
-                    if n.name == self.name or n.num_car == self.name:
-                        if n.count == 0:
-                            n.count = 1
-                            if n.num_car == self.num_car:
-                                n.save()
-                            else:
-                                n.num_car = n.num_car + ', ' + self.num_car
-                                n.save()
-                        elif n.count == 1:
-                            n.count = 2
-                            if n.num_car == self.num_car:
-                                n.save()
-                            else:
-                                n.num_car = n.num_car + ', ' + self.num_car
-                                n.save()
-                        elif n.count == 2:
-                            n.count = 3
-                            if n.num_car == self.num_car:
-                                n.save()
-                            else:
-                                n.num_car = n.num_car + ', ' + self.num_car
-                                n.save()
-                        elif n.count == 3:
-                            n.count = 4
-                            if n.num_car == self.num_car:
-                                n.save()
-                            else:
-                                n.num_car = n.num_car + ', ' + self.num_car
-                                n.save()
-                        elif n.count == 4:
-                            n.count = 5
-                            if n.num_car == self.num_car:
-                                n.save()
-                            else:
-                                n.num_car = n.num_car + ', ' + self.num_car
-                                n.save()
-                        elif n.count == 5:
-                            n.count = 1
-                            n.num_car = self.num_car
-                            n.save()
-                        counter = n.count
-                    else:
-                        Clients.objects.create(name=self.name, num_car=self.num_car, count=1)
+                    clientss_name.append()
+                    clientss_num.append()
+                if self.name in clientss_name or self.num_car in clientss_num:
+                    for d in Clients.objects.all():
+                        if d.name == self.name or d.num_car == self.name:
+                            if d.count == 0:
+                                d.count = 1
+                                if d.num_car == self.num_car:
+                                    d.save()
+                                else:
+                                    d.num_car = d.num_car + ', ' + self.num_car
+                                    d.save()
+                            elif d.count == 1:
+                                d.count = 2
+                                if d.num_car == self.num_car:
+                                    d.save()
+                                else:
+                                    d.num_car = d.num_car + ', ' + self.num_car
+                                    d.save()
+                            elif d.count == 2:
+                                d.count = 3
+                                if d.num_car == self.num_car:
+                                    d.save()
+                                else:
+                                    d.num_car = d.num_car + ', ' + self.num_car
+                                    d.save()
+                            elif d.count == 3:
+                                d.count = 4
+                                if d.num_car == self.num_car:
+                                    d.save()
+                                else:
+                                    d.num_car = d.num_car + ', ' + self.num_car
+                                    d.save()
+                            elif d.count == 4:
+                                d.count = 5
+                                if d.num_car == self.num_car:
+                                    d.save()
+                                else:
+                                    d.num_car = d.num_car + ', ' + self.num_car
+                                    d.save()
+                            elif d.count == 5:
+                                d.count = 1
+                                d.num_car = self.num_car
+                                d.save()
+                        counter = d.count
+                else:
+                    Clients.objects.create(name=self.name, num_car=self.num_car, count=1)
             else:
                 Clients.objects.create(name=self.name, num_car=self.num_car, count=1)
             if counter == 5:
