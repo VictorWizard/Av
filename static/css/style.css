@@ -1271,11 +1271,21 @@ body.mobile-nav-active #mobile-nav-toggle {
   padding: 8px 28px;
   border-radius: 35px;
   transition: 0.5s;
-  margin: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
   margin-left: 50px;
   border: 2px solid #fff;
   color: #fff;
   background-color: #48e26b;
+}
+@media (max-width: 444px) {
+  .custom_btn{
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+  }
 }
 .custom_btn:hover {
   color: #fff;
@@ -1349,21 +1359,40 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-top: 20px;
   margin-right: 20px;
 }
-
+@media (max-width: 444px) {
+  .form{
+    text-align: center;
+  }
+}
 .formm{
   text-align: center;
 }
 .form-item1, .form-item2{
     color: green;
 }
+@media (max-width: 444px) {
+  .form-item1 {
+    display: grid;
+  }
+}
 .labell{
   display: inline-block;
   width: 15%;
 }
-@media (max-width: 768px) {
+@media (min-width: 445px) and (max-width: 768px) {
   .labell {
-    display: inline-block;
-    width: 25%;
+    width: 45%;
+  }
+}
+@media (max-width: 768px) {
+  .labell label{
+    width: 100%;
+  }
+}
+@media (max-width: 444px) {
+  .labell {
+    width: 100%;
+    text-align: center;
   }
 }
 .labelll{
@@ -1371,16 +1400,36 @@ body.mobile-nav-active #mobile-nav-toggle {
   width: 20%;
   text-align: left;
 }
+@media (max-width: 444px) {
+  .labelll {
+    width: 100%;
+  }
+}
+@media (max-width: 444px) {
+  .labelll label{
+    text-align: center;
+  }
+}
 .labellll{
   display: inline-block;
 }
-@media (max-width: 768px) {
+@media (min-width: 445px) and (max-width: 768px) {
   .labellll {
     margin-left: 130px;
   }
 }
+@media (max-width: 444px) {
+  .labellll label{
+    text-align: center;
+  }
+}
 .form-padding{
   display: inline-block;
+}
+@media (max-width: 444px) {
+  .form-padding area, input:not([type=range]), label, textarea, select{
+    width: 100%;
+  }
 }
 .form-padding1{
   display: block;
@@ -1389,12 +1438,22 @@ body.mobile-nav-active #mobile-nav-toggle {
   display: inline-block;
   width: 30%;
 }
+@media (max-width: 444px) {
+  .form-padding-after {
+    width: 100%;
+  }
+}
 .form-padding-after label{
   font-size: 12px;
   color: #b91d1d;
 }
+@media (max-width: 444px) {
+  .form-padding-after label{
+    text-align: center;
+  }
+}
 .button1{
-  margin-right: 27px;
+
 }
 .box{
   background-color: #1c7430;
