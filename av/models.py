@@ -104,8 +104,8 @@ class Appointments(models.Model):
         if self.name != None:
             if Clients.objects.count() != 0:
                 for n in Clients.objects.all():
-                    clientss_name.append()
-                    clientss_num.append()
+                    clientss_name.append(n)
+                    clientss_num.append(n)
                 if self.name in clientss_name or self.num_car in clientss_num:
                     for d in Clients.objects.all():
                         if d.name == self.name or d.num_car == self.name:
