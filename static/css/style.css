@@ -1218,6 +1218,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   border-radius: 20px;
   padding: 8px 30px;
   color: #fff;
+  width: 100%;
 }
 
 #contact .form button[type="submit"]:hover {
@@ -1281,6 +1282,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 @media (max-width: 444px) {
   .custom_btn{
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+  }
+}
+@media (max-width: 444px) {
+  #contact .custom_btn{
     margin-top: 10px;
     margin-right: 0px;
     margin-bottom: 0px;
@@ -1451,9 +1460,6 @@ body.mobile-nav-active #mobile-nav-toggle {
   .form-padding-after label{
     text-align: center;
   }
-}
-.button1{
-
 }
 .box{
   background-color: #1c7430;
