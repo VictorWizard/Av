@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Calculate_price, Cars, Services_prices, Services, Tel_number, Appointments, Feedbacks, Address, Clients
+from .models import Services_prices, Appointments, Feedbacks, Clients
 
 class AvAdmin(admin.ModelAdmin):
     list_display = ('car', 'service', 'price')
@@ -23,11 +23,6 @@ class FeedbacksAdmin(admin.ModelAdmin):
     search_fields = ('name', 'e_mail', 'rating', 'feedback')
 
 admin.site.register(Appointments, AppointmentsAdmin)
-admin.site.register(Calculate_price)
-admin.site.register(Cars)
 admin.site.register(Services_prices, AvAdmin)
-admin.site.register(Services)
-admin.site.register(Tel_number)
-admin.site.register(Address)
 admin.site.register(Feedbacks, FeedbacksAdmin)
 admin.site.register(Clients, ClientsAdmin)
