@@ -13,7 +13,7 @@ class AppointmentForm(forms.ModelForm):
     service1 = forms.ModelChoiceField(queryset=Services.objects.all(), label='Тип услуги', required = False, widget=forms.widgets.Select())
     service2 = forms.ModelChoiceField(queryset=Services.objects.all(), label='Тип услуги(опционально)', help_text="Если вам нужна только одна услуга, то поле оставьте пустым", required=False, widget=forms.widgets.Select())
     service3 = forms.ModelChoiceField(queryset=Services.objects.all(), label='Тип услуги(опционально)', help_text="Если вам нужна только одна услуга, то поле оставьте пустым", required=False, widget=forms.widgets.Select())
-    date_service = forms.DateField(help_text='Введите дату в таком формате: 12.12.2019', widget=forms.widgets.DateInput)
+    date_service = forms.DateField(help_text='Введите дату в таком формате: 12.12.2019', widget=forms.widgets.SelectDateWidget)
     time_service = forms.TimeField(widget=forms.widgets.TimeInput, help_text="Введите время в таком формате: 15:00")
 
     class Meta:
