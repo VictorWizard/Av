@@ -1219,7 +1219,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   border-radius: 20px;
   padding: 8px 30px;
   color: #fff;
-  width: 100%;
+  width: 45%;
 }
 
 @media (max-width: 768px) {
